@@ -41,6 +41,7 @@
           <li><a href="#about" class="menu-btn">About</a></li>
           <li><a href="#services" class="menu-btn">Services</a></li>
           <li><a href="#skills" class="menu-btn">Skills</a></li>
+          <li><a href="#portfolio" class="menu-btn">Portfolio</a></li>
           <li><a href="#teams" class="menu-btn">Teams</a></li>
           <li><a href="#contact" class="menu-btn">Contact</a></li>
         </ul>
@@ -57,7 +58,7 @@
           <div class="text-1">Hello, my name is</div>
           <div class="text-2">Grace A. A. Praiselight</div>
           <div class="text-3">And I'm a <span class="typing"></span></div>
-          <a href="#">Get in touch</a>
+          <a href="#contact">Get in touch</a>
         </div>
       </div>
     </section>
@@ -95,12 +96,14 @@
         </div>
       </div>
     </section>
+    <!-- about section end -->
 
-    <!-- services section end -->
+    <!-- services section start -->
     <section class="services" id="services">
       <div class="max-width">
         <h2 class="title">My services</h2>
         <div class="serv-content">
+          <!-- Caregiver Card -->
           <div class="card">
             <div class="box">
               <i class="fas fa-user-nurse"></i>
@@ -109,8 +112,22 @@
                 Grace Praiselight is a seasoned professional with over 26 years
                 of experience in childcare and elderly care.
               </p>
+              <!-- Hidden content for "Read more" -->
+              <div class="read-more-cont">
+                <p>
+                  Grace Praiselight is a seasoned professional with over 26
+                  years of experience in childcare and elderly care, underpinned
+                  by certifications that demonstrate her commitment to
+                  excellence in these fields. A graduate of Mass Communication
+                  from Edo State, she merges her expertise in communication with
+                  her passion for nurturing individuals across all stages of
+                  life.
+                </p>
+              </div>
+              <button class="read-more-btn">Read more</button>
             </div>
           </div>
+          <!-- Script Writing Card -->
           <div class="card">
             <div class="box">
               <i class="fas fa-scroll"></i>
@@ -120,8 +137,19 @@
                 prolific writer and a passionate advocate for faith-driven
                 living.
               </p>
+              <!-- Hidden content for "Read more" -->
+              <div class="read-more-cont">
+                <p>
+                  Grace Praiselight has authored numerous scripts and articles
+                  that inspire and educate. Her works often focus on themes of
+                  faith, resilience, and community development. She is also a
+                  sought-after speaker at conferences and workshops.
+                </p>
+              </div>
+              <button class="read-more-btn">Read more</button>
             </div>
           </div>
+          <!-- Change Agent Card -->
           <div class="card">
             <div class="box">
               <i class="fas fa-business-time"></i>
@@ -130,13 +158,32 @@
                 As a thought leader in community development, Grace stands as a
                 beacon of resilience, wisdom, and compassion.
               </p>
+              <!-- Hidden content for "Read more" -->
+              <div class="read-more-cont">
+                <p>
+                  Grace Praiselight has spearheaded numerous initiatives aimed
+                  at empowering communities. Her leadership style is rooted in
+                  empathy and a deep understanding of the challenges faced by
+                  marginalized groups. She is a mentor to many young leaders.
+                </p>
+              </div>
+              <button class="read-more-btn">Read more</button>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Popup Structure -->
+      <div class="popup-overlay">
+        <div class="popup-content">
+          <span class="close-btn">&times;</span>
+          <h2 class="popup-title"></h2>
+          <p class="popup-description"></p>
+        </div>
+      </div>
     </section>
 
-    <!-- skills section end -->
+    <!-- skills section start -->
     <section class="skills" id="skills">
       <div class="max-width">
         <h2 class="title">My skills</h2>
@@ -194,6 +241,84 @@
       </div>
     </section>
 
+    <!-- Portfolio Section Starts -->
+    <section class="portfolio" id="portfolio">
+      <div class="heading text-center pt-5">
+        <h2 class="title">My Portfolio</h2>
+      </div>
+
+      <!-- Portfolio Items -->
+      <div class="portfolio-body">
+        <div class="row">
+          <!-- Portfolio Item 1 -->
+          <div class="post caregiving all">
+            <div class="card">
+              <img
+                src="images/caregiving-thumbnail-2.jpeg"
+                class="card-img-top"
+                alt="Caregiving"
+              />
+              <div class="card-body text-center">
+                <h4 class="card-title">Elderly Care Support</h4>
+                <br />
+                <button class="read-more-btn" data-gallery="caregiving-gallery">
+                  View Portfolio Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Portfolio Item 2 -->
+          <div class="post scriptwriting all">
+            <div class="card">
+              <img
+                src="images/scriptwriting-thumbnail-2.jpeg"
+                class="card-img-top"
+                alt="Script Writing"
+              />
+              <div class="card-body text-center">
+                <h4 class="card-title">Inspirational Writing</h4>
+                <br />
+                <button
+                  class="read-more-btn"
+                  data-gallery="scriptwriting-gallery"
+                >
+                  View Portfolio Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Portfolio Item 3 -->
+          <div class="post community all">
+            <div class="card">
+              <img
+                src="images/community-worker-thumbnail-2.jpeg"
+                class="card-img-top"
+                alt="Community Impact"
+              />
+              <div class="card-body text-center">
+                <h4 class="card-title">Community Empowerment</h4>
+                <br />
+                <button class="read-more-btn" data-gallery="community-gallery">
+                  View Portfolio Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popup Gallery -->
+    <div class="popup-gallery-overlay">
+      <div class="popup-gallery-box">
+        <span class="close-gallery-btn">&times;</span>
+        <div class="gallery-content"></div>
+      </div>
+    </div>
+    <!-- Portfolio Section Ends -->
+
     <!-- teams section start -->
     <section class="teams" id="teams">
       <div class="max-width">
@@ -224,16 +349,16 @@
           </div>
           <div class="card">
             <div class="box">
-              <img src="images/profile-4.jpeg" alt="" />
-              <div class="text">Someone name</div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <img src="images/profile-9.jpg" alt="" />
+              <div class="text">Oluwatoyin</div>
+              <p>A seasoned Project consultant and researcher.</p>
             </div>
           </div>
           <div class="card">
             <div class="box">
-              <img src="images/profile-5.jpeg" alt="" />
-              <div class="text">Someone name</div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <img src="images/profile-10.jpeg" alt="" />
+              <div class="text">John</div>
+              <p>A seasoned Marketing Strategist and Sales Coach.</p>
             </div>
           </div>
         </div>
@@ -248,9 +373,11 @@
           <div class="column left">
             <div class="text">Get in Touch</div>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Dignissimos harum corporis fuga corrupti. Doloribus quis soluta
-              nesciunt veritatis vitae nobis?
+              I would love to hear from you! Whether you have questions about my
+              projects, need personalized recommendations, or want to book an
+              appointment, I and my team is here to help. Reach out to us via
+              email, or by filling out the contact form, and we will get back to
+              you as soon as possible.
             </p>
             <div class="icons">
               <div class="row">

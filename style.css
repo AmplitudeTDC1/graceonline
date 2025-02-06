@@ -169,6 +169,9 @@ section .title::after {
 /* home section styling */
 .home {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   background: url("images/hero.jpg") no-repeat center;
   height: 100vh;
   color: #fff;
@@ -176,45 +179,113 @@ section .title::after {
   background-size: cover;
   background-attachment: fixed;
   font-family: "Ubuntu", sans-serif;
+  padding: 20px;
 }
+
 .home .max-width {
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.home .max-width .row {
-  margin-right: 0;
+
+.home .home-content {
+  max-width: 800px;
 }
+
 .home .home-content .text-1 {
-  font-size: 27px;
+  font-size: 22px;
 }
+
 .home .home-content .text-2 {
-  font-size: 70px;
+  font-size: 60px;
   font-weight: 600;
-  margin-left: -3px;
 }
+
 .home .home-content .text-3 {
-  font-size: 40px;
+  font-size: 32px;
   margin: 5px 0;
 }
+
 .home .home-content .text-3 span {
   color: rgb(255, 176, 6);
   font-weight: 500;
 }
+
 .home .home-content a {
   display: inline-block;
   background: rgb(255, 176, 6);
   color: #fff;
-  font-size: 25px;
-  padding: 12px 36px;
+  font-size: 20px;
+  padding: 10px 28px;
   margin-top: 20px;
   font-weight: 400;
   border-radius: 6px;
   border: 2px solid rgb(255, 176, 6);
   transition: all 0.3s ease;
 }
+
 .home .home-content a:hover {
   color: rgb(255, 176, 6);
   background: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .home {
+    background-attachment: scroll;
+  }
+  .home .home-content .text-2 {
+    font-size: 50px;
+  }
+  .home .home-content .text-3 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    height: auto;
+    padding: 50px 20px;
+    text-align: center;
+  }
+
+  .home .home-content .text-1 {
+    font-size: 20px;
+  }
+
+  .home .home-content .text-2 {
+    font-size: 45px;
+  }
+
+  .home .home-content .text-3 {
+    font-size: 26px;
+  }
+
+  .home .home-content a {
+    font-size: 18px;
+    padding: 8px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home .home-content .text-1 {
+    font-size: 18px;
+  }
+
+  .home .home-content .text-2 {
+    font-size: 36px;
+  }
+
+  .home .home-content .text-3 {
+    font-size: 22px;
+  }
+
+  .home .home-content a {
+    font-size: 16px;
+    padding: 8px 20px;
+  }
 }
 
 /* about section styling */
@@ -261,18 +332,20 @@ section .title::after {
   background: none;
 }
 
-/* services section styling */
 .services,
-.teams {
+.teams,
+.portfolio {
   color: #fff;
   background: #111;
 }
 .services .title::before,
-.teams .title::before {
+.teams .title::before,
+.portfolio .title::before {
   background: #fff;
 }
 .services .title::after,
-.teams .title::after {
+.teams .title::after,
+.portfolio .title::after {
   background: #111;
   content: "what i provide";
 }
@@ -308,8 +381,79 @@ section .title::after {
   margin: 10px 0 7px 0;
 }
 
-/* skills section styling */
+/* Read More Button */
+.services .serv-content .card .read-more-btn {
+  background: rgb(255, 176, 6);
+  color: #111;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
 
+.services .serv-content .card .read-more-btn:hover {
+  background: #fff;
+}
+
+/* Hide the additional content by default */
+.services .serv-content .card .read-more-cont {
+  display: none;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease;
+}
+
+.popup-overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Popup Content */
+.popup-content {
+  background: #222;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+}
+
+.popup-content .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.popup-content .popup-title {
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.popup-content .popup-description {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* skills section styling */
 .skills .title::after {
   content: "what i know";
 }
@@ -381,6 +525,191 @@ section .title::after {
 }
 .skills-content .right .singing::before {
   width: 70%;
+}
+
+/* Portfolio Section Styling */
+#portfolio {
+  padding: 50px 20px; /* Adjusted padding for the section */
+  background-color: #121212; /* Dark background */
+}
+
+/* Portfolio Section Heading Styling */
+#portfolio .heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#portfolio .heading h2 {
+  font-size: 2.5rem; /* Adjusted font size */
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.portfolio .title::after {
+  content: "what i have done";
+}
+
+#portfolio .heading h3::before {
+  content: "—"; /* Starting dash before the heading */
+  color: #ffffff; /* Dash color to match the style */
+  margin-right: 10px; /* Space between dash and the heading */
+}
+
+#portfolio .heading h3::after {
+  content: " — what i provide"; /* Added "—" before the text */
+  display: block;
+  font-size: 1rem;
+  color: #f39c12;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+/* Filter Buttons Styling */
+#filterButtons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+#filterButtons .filter-item {
+  background: #1c1c1c;
+  color: #f39c12;
+  border: 1px solid #f39c12;
+  padding: 10px 15px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+#filterButtons .filter-item:hover,
+#filterButtons .filter-item.active {
+  background: #f39c12;
+  color: #121212;
+}
+
+/* Portfolio Items Layout */
+.portfolio-body .row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+/* Portfolio Item Styling */
+.portfolio-body .post {
+  flex: 1 0 30%;
+  background: #1c1c1c;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  margin: 10px;
+}
+
+.portfolio-body .post img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.portfolio-body .card .card-body .card-title {
+  font-size: 25px;
+  font-weight: 500;
+  margin: 10px 0 7px 0;
+}
+
+.portfolio-body .post:hover {
+  background: rgb(255, 176, 6);
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Badge Styling */
+.portfolio-body .badge {
+  background: #f39c12;
+  color: #121212;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+/* Read More Button Styling */
+.portfolio-body .read-more-btn {
+  background: rgb(255, 176, 6);
+  color: #111;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+
+.portfolio-body .read-more-btn:hover {
+  background: #ffffff;
+}
+
+/* Popup Gallery Styling */
+.popup-gallery-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease;
+}
+
+.popup-gallery-box {
+  background-color: #1c1c1c;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  height: 80%;
+  max-height: 600px;
+  position: relative;
+  transform: translateY(-50px);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+}
+
+.popup-gallery-box .close-gallery-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.gallery-content {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.gallery-content img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .portfolio-body .post {
+    width: 90%;
+  }
 }
 
 /* teams section styling */

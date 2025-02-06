@@ -100,3 +100,118 @@ form.addEventListener("submit", (e) => {
     })
     .catch((error) => console.error("Error!", error.message));
 });
+
+// Select filter buttons and portfolio items
+const filterButtons = document.querySelectorAll(".filter-item");
+const posts = document.querySelectorAll(".post");
+
+// Add click event listener to each filter button
+filterButtons.forEach((button) => {
+  button.addEventListener("click", function () {
+    // Remove 'active' class from all buttons
+    filterButtons.forEach((btn) => btn.classList.remove("active"));
+    // Add 'active' class to clicked button
+    this.classList.add("active");
+
+    // Get filter value from data attribute
+    const filterValue = this.getAttribute("data-filter");
+
+    // Loop through portfolio items
+    posts.forEach((post) => {
+      if (filterValue === "all") {
+        post.style.display = "block"; // Show all items
+      } else {
+        // Check if the item matches the selected filter
+        if (post.classList.contains(filterValue)) {
+          post.style.display = "block"; // Show matching items
+        } else {
+          post.style.display = "none"; // Hide non-matching items
+        }
+      }
+    });
+  });
+});
+
+// Read More popup box activation code
+document.addEventListener("DOMContentLoaded", function () {
+  const readMoreButtons = document.querySelectorAll(".read-more-btn");
+  const popupOverlay = document.querySelector(".popup-overlay");
+  const closeBtn = document.querySelector(".close-btn");
+  const popupTitle = document.querySelector(".popup-title");
+  const popupDescription = document.querySelector(".popup-description");
+
+  readMoreButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".card");
+      const title = card.querySelector(".text").textContent;
+      const description = card.querySelector(".read-more-cont").innerHTML; // Fetch hidden content
+
+      popupTitle.textContent = title;
+      popupDescription.innerHTML = description; // Use innerHTML to preserve formatting
+      popupOverlay.classList.add("active");
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    popupOverlay.classList.remove("active");
+  });
+
+  popupOverlay.addEventListener("click", (e) => {
+    if (e.target === popupOverlay) {
+      popupOverlay.classList.remove("active");
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const readMoreBtns = document.querySelectorAll(".read-more-btn");
+  const popupGalleryOverlay = document.querySelector(".popup-gallery-overlay");
+  const popupGalleryBox = document.querySelector(".popup-gallery-box");
+  const galleryContent = document.querySelector(".gallery-content");
+  const closeGalleryBtn = document.querySelector(".close-gallery-btn");
+
+  const galleries = {
+    "caregiving-gallery": [
+      "images/caregiving-thumbnail-1.jpg",
+      "images/caregiving-thumbnail-2.jpeg",
+      "images/caregiving-3.jpg",
+    ],
+    "scriptwriting-gallery": [
+      "images/scriptwriting-1.jpg",
+      "images/scriptwriting-2.jpg",
+      "images/scriptwriting-3.jpg",
+    ],
+    "community-gallery": [
+      "images/community-1.jpg",
+      "images/community-2.jpg",
+      "images/community-3.jpg",
+    ],
+  };
+
+  readMoreBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const galleryId = btn.getAttribute("data-gallery");
+      const images = galleries[galleryId];
+      galleryContent.innerHTML = images
+        .map((img) => `<img src="${img}" alt="Gallery Image">`)
+        .join("");
+      popupGalleryOverlay.style.visibility = "visible";
+      popupGalleryOverlay.style.opacity = "1";
+      popupGalleryBox.style.transform = "translateY(0)";
+    });
+  });
+
+  closeGalleryBtn.addEventListener("click", function () {
+    popupGalleryOverlay.style.visibility = "hidden";
+    popupGalleryOverlay.style.opacity = "0";
+    popupGalleryBox.style.transform = "translateY(-50px)";
+  });
+
+  popupGalleryOverlay.addEventListener("click", function (e) {
+    if (e.target === popupGalleryOverlay) {
+      popupGalleryOverlay.style.visibility = "hidden";
+      popupGalleryOverlay.style.opacity = "0";
+      popupGalleryBox.style.transform = "translateY(-50px)";
+    }
+  });
+});
